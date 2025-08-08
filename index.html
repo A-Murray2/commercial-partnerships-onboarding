@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Commercial Partnerships - Team Onboarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #fafbfc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #96BF48;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #96BF48, #00A047);
+            width: 20%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .step-indicators {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .step {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background-color: #e2e8f0;
+            color: #64748b;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: #96BF48;
+            transform: scale(1.05);
+        }
+
+        .step.active {
+            background-color: #96BF48;
+            color: white;
+        }
+
+        /* Content */
+        .content {
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #96BF48, #00A047);
+            border-radius: 2px;
+        }
+
+        .section-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #96BF48;
+            opacity: 0.6;
+        }
+
+        .section-content {
+            display: grid;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #96BF48;
+            margin-bottom: 2rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(150, 191, 72, 0.1), rgba(0, 160, 71, 0.1));
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            color: #00A047;
+            border-left: 4px solid #96BF48;
+            position: relative;
+        }
+
+        .roadmap-list {
+            list-style: none;
+        }
+
+        .roadmap-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .roadmap-list li:last-child {
+            border-bottom: none;
+        }
+
+        .roadmap-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00A047;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 160, 71, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Mission Breakdown Styles */
+        .mission-breakdown {
+            margin: 1.5rem 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .mission-item {
+            padding: 1rem;
+            background: rgba(150, 191, 72, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #96BF48;
+        }
+
+        .mission-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #96BF48;
+            margin-bottom: 0.25rem;
+        }
+
+        .mission-item p {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(150, 191, 72, 0.3);
+        }
+
+        .prev-btn {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #96BF48, #00A047);
+            color: white;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-info {
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        /* Team Grid Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Flip Card Styles */
+        .team-card {
+            background: transparent;
+            width: 100%;
+            height: 180px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .team-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .team-card.flipped .team-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .team-card-front, .team-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(150, 191, 72, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.25rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .team-card:hover .team-card-front {
+            border-color: rgba(150, 191, 72, 0.6);
+        }
+
+        .team-card-front {
+            background: linear-gradient(135deg, rgba(150, 191, 72, 0.05), rgba(0, 160, 71, 0.05));
+        }
+
+        .team-card-back {
+            background: linear-gradient(135deg, #96BF48, #00A047);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .team-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            filter: drop-shadow(0 2px 4px rgba(150, 191, 72, 0.3));
+        }
+
+        .team-card-front h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .team-card-back p {
+            font-size: 0.95rem;
+            color: white;
+            text-align: center;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .click-hint {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .team-card-front .click-hint {
+            color: #96BF48;
+        }
+
+        .team-card-back .click-hint {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .team-card:hover .team-card-inner {
+            transform: scale(1.02);
+        }
+
+        .team-card.flipped:hover .team-card-inner {
+            transform: rotateY(180deg) scale(1.02);
+        }
+
+        /* Leadership Grid Styles */
+        .leadership-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .leader-card {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(150, 191, 72, 0.05), rgba(0, 160, 71, 0.05));
+            border-radius: 12px;
+            border: 1px solid rgba(150, 191, 72, 0.2);
+        }
+
+        .leader-photo {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .leader-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #96BF48;
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover .leader-img {
+            border-color: #00A047;
+            transform: scale(1.05);
+        }
+
+        .leader-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #96BF48, #00A047);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #96BF48;
+        }
+
+        .placeholder-initials {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .leader-info h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .leader-info p {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .leadership-note {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(150, 191, 72, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid #96BF48;
+        }
+
+        .leadership-note p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Connection Methods */
+        .connection-methods {
+            margin-top: 1.5rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .connection-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(150, 191, 72, 0.05);
+            border-radius: 6px;
+            border-left: 3px solid #96BF48;
+        }
+
+        .connection-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .connection-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .connection-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Communication Page Styles */
+        .communication-channels {
+            margin-top: 1.5rem;
+        }
+
+        .channel-placeholder {
+            padding: 1rem;
+            background: rgba(150, 191, 72, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid #96BF48;
+            font-style: italic;
+            color: #64748b;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(150, 191, 72, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #96BF48;
+        }
+
+        .channel-name {
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .channel-name a {
+            color: #96BF48;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .channel-name a:hover {
+            color: #00A047;
+            text-decoration: underline;
+        }
+
+        .channel-description {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .channel-uses {
+            margin: 0.75rem 0 0 0;
+            padding-left: 1.25rem;
+            list-style-type: disc;
+        }
+
+        .channel-uses li {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .channel-uses li:last-child {
+            margin-bottom: 0;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.25rem;
+            background: rgba(150, 191, 72, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #96BF48;
+        }
+
+        .guideline-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .guideline-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .guideline-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Team Rituals Styles */
+        .rituals-list {
+            margin-top: 1.5rem;
+        }
+
+        .ritual-item {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(150, 191, 72, 0.05), rgba(0, 160, 71, 0.05));
+            border-radius: 12px;
+            border-left: 4px solid #96BF48;
+        }
+
+        .ritual-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .ritual-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .ritual-header h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .ritual-frequency {
+            background: linear-gradient(135deg, #96BF48, #00A047);
+            color: white;
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ritual-description {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .ritual-points {
+            margin: 0;
+            padding-left: 1.5rem;
+            list-style-type: decimal;
+        }
+
+        .ritual-points li {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .ritual-points li:last-child {
+            margin-bottom: 0;
+        }
+
+        .ritual-points strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .ritual-note {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-card {
+                height: 160px;
+            }
+
+            .team-card-front h4 {
+                font-size: 1rem;
+            }
+
+            .team-card-back p {
+                font-size: 0.9rem;
+            }
+
+            .team-icon {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .leader-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .leader-photo {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .leader-info h4 {
+                font-size: 1.1rem;
+            }
+
+            .leader-info p {
+                font-size: 0.9rem;
+            }
+
+            .guideline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .guideline-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                margin-top: 0;
+            }
+
+            .ritual-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .ritual-header h4 {
+                font-size: 1.1rem;
+            }
+
+            .ritual-frequency {
+                align-self: flex-start;
+            }
+
+            .mission-breakdown {
+                gap: 0.75rem;
+            }
+
+            .mission-item {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Welcome to Global Commercial Partnerships</h1>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="step-indicators">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+                <div class="step" data-step="5">5</div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <main class="content">
+            <!-- Section 1: Mission & Roadmap -->
+            <section class="section active" id="section1">
+                <div class="section-header">
+                    <h2>Team Mission</h2>
+                    <span class="section-number">01</span>
+                </div>
+                <div class="section-content">
+                    <div class="card">
+                        <h3>Our Mission</h3>
+                        <p>Commercial Partnerships drives demand, sales, services, and solution acceleration through partners to help merchants start, scale, and succeed on Shopify.</p>
+                        <div class="mission-breakdown">
+                            <div class="mission-item">
+                                <h4>Who we help:</h4>
+                                <p>Merchants (start, scale, succeed)</p>
+                            </div>
+                            <div class="mission-item">
+                                <h4>How we do:</h4>
+                                <p>Through Partners</p>
+                            </div>
+                            <div class="mission-item">
+                                <h4>What we do:</h4>
+                                <p>Demand, Sales, Services, Solutions</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            Making commerce better for everyone - one partnership at a time.
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <!-- Section 2: Teams -->
+            <section class="section" id="section2">
+                <div class="section-header">
+                    <h2>Meet the Teams</h2>
+                    <span class="section-number">02</span>
+                </div>
+                <div class="section-content">
+                    <div class="card">
+                        <h3>Meet the Teams</h3>
+                        <p>Our Global Commercial Partnerships organization is made up of specialized teams across regions and focus areas, each driving strategic growth and partner success.</p>
+                        <div class="highlight">
+                            💡 <strong>Interactive:</strong> Click on any team card below to learn more about what they do!
+                        </div>
+                        <div class="team-grid">
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🌎</div>
+                                        <h4>AMER Partner Recruitment</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.85rem; line-height: 1.3; text-align: center; margin: 0; padding: 0 0.5rem;">Recruit and activate high-impact partners across all lines of business to drive scalable revenue through referrals, co-sell, implementation and development shop launches.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">⚡</div>
+                                        <h4>AMER Technology Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.85rem; line-height: 1.3; text-align: center; margin: 0; padding: 0 0.5rem;">Our team identifies, recruits, enables & scales strategic technology partners. Our role as PDMs is to help Premier & Platinum tech partners to grow WITH Shopify to expand our merchant base and accelerate GMV growth.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🏢</div>
+                                        <h4>AMER Agency + SI Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.8rem; line-height: 1.2; text-align: center; margin: 0; padding: 0 0.3rem;">Shopify is making a significant strategic investment in partnering with services partners to accelerate growth. The strategy focuses on building long-term relationships, developing joint industry-specific solutions, aligning sales and marketing efforts, and empowering partners to effectively position and sell Shopify. "When our partners win, we win!"</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">💰</div>
+                                        <h4>AMER Investment Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.85rem; line-height: 1.3; text-align: center; margin: 0; padding: 0 0.5rem;">Partner with leading Investment firms to solidify Shopify as the default commerce solution and drive revenue</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🛍️</div>
+                                        <h4>Retail Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.8rem; line-height: 1.2; text-align: center; margin: 0; padding: 0 0.3rem;">Become the most efficient and fastest growing channel to acquire retail merchants. Our POS app ecosystem will be high caliber, diverse, and unlock new ways for our merchants to interact with POS and drive growth for their businesses.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🎯</div>
+                                        <h4>B2B Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.8rem; line-height: 1.2; text-align: center; margin: 0; padding: 0 0.3rem;">Build the Craft Excellence to build a successful global B2B-first book of revenue via Agency Partners. Deliver a commercial revenue target QoQ in NAMER from the book of Partners assigned to the team.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🔄</div>
+                                        <h4>Reseller Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.78rem; line-height: 1.2; text-align: center; margin: 0; padding: 0 0.3rem;">Boost revenue through the reseller ecosystem - enabling partners to sell Shopify products while managing merchant billing and support seamlessly at scale. This program drives market penetration and diversification through expansion into new verticals and markets.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🔧</div>
+                                        <h4>Partner Solution Engineering</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p>to be added</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">📢</div>
+                                        <h4>Partner Marketing</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p>to be added</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">📚</div>
+                                        <h4>External Education & Enablement</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p>The External Enablement & Education team scales accessible education to build a global ecosystem of certified Shopify experts, ensuring merchants worldwide can confidently grow their businesses with quality professional support.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🌏</div>
+                                        <h4>APAC Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p>to be added</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">🇪🇺</div>
+                                        <h4>EMEA Partnerships</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p>to be added</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-card" onclick="flipCard(this)">
+                                <div class="team-card-inner">
+                                    <div class="team-card-front">
+                                        <div class="team-icon">⚙️</div>
+                                        <h4>Partner Programs + Operations</h4>
+                                        <span class="click-hint">Click to learn more</span>
+                                    </div>
+                                    <div class="team-card-back">
+                                        <p style="font-size: 0.75rem; line-height: 1.2; text-align: center; margin: 0; padding: 0 0.3rem;">Drive innovative partnerships and operational excellence that benefit our company, our partners, and our customers by streamlining processes, leveraging technology to enhance efficiency and establishing clear metrics to evaluate the effectiveness of partnerships; ensuring continuous improvement and success tracking.</p>
+                                        <span class="click-hint">Click to go back</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Senior Leadership Team</h3>
+                        <div class="leadership-grid">
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/vp-commercial-partnerships.jpg" alt="VP Commercial Partnerships" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">VP</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Rukmani Subramanian</h4>
+                                    <p>VP, Commercial Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/bharati.png" alt="Bharati Balakrishan" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">BB</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Bharati Balakrishan</h4>
+                                    <p>Director, B2B Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/brittany.jpg" alt="Brittany Halldorson" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">BH</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Brittany Halldorson</h4>
+                                    <p>Senior Lead, Partner Marketing</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/calli.jpg" alt="Calli Loesche" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">CL</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Calli Loesche</h4>
+                                    <p>Director, Partner Programs & Operations</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/dale.png" alt="Dale Traxler" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">DT</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Dale Traxler</h4>
+                                    <p>Director, Technology Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/drew.png" alt="Drew Owen" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">DO</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Drew Owen</h4>
+                                    <p>Manager, Investment Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/emilie.png" alt="Emilie Benoit-Vernay" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">EB</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Emilie Benoit-Vernay</h4>
+                                    <p>Director, EMEA Global Commercial Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/jo.png" alt="Jo Lu" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">JL</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Jo Lu</h4>
+                                    <p>Director, Reseller Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/lynn.jpg" alt="Lynn Torbert" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">LT</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Lynn Torbert</h4>
+                                    <p>Senior Lead, Partner Recruit</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/michelle.jpg" alt="Michelle Kostya" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">MK</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Michelle Kostya</h4>
+                                    <p>Head of External Education & Enablement</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/morghan.png" alt="Morghan Golofaro" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">MG</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Morghan Golofaro</h4>
+                                    <p>Director, Systems Integrator and Agency Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/rhys.jpg" alt="Rhys Furner" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">RF</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Rhys Furner</h4>
+                                    <p>Director, APAC Partnerships</p>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-card">
+                                <div class="leader-photo">
+                                    <img src="assets/images/Sayed.jpg" alt="Sayed Saber" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="leader-placeholder">
+                                        <div class="placeholder-initials">SS</div>
+                                    </div>
+                                </div>
+                                <div class="leader-info">
+                                    <h4>Sayed Saber</h4>
+                                    <p>Director, Retail Partnerships</p>
+                                </div>
+                            </div>
+                            <!-- Add more leaders here -->
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </section>
+
+            <!-- Section 3: Communication -->
+            <section class="section" id="section3">
+                <div class="section-header">
+                    <h2>Communication</h2>
+                    <span class="section-number">03</span>
+                </div>
+                <div class="section-content">
+                    <div class="card">
+                        <h3>How We Communicate</h3>
+                        <p>Our team uses two primary communication tools to stay connected, collaborate, and share important information across our Global Commercial Partnerships.</p>
+                        <div class="highlight">
+                            We use Vault Feed to tell people things. We use Slack to do things.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>💬 Slack Channels</h3>
+                        <p>Our real-time communication hub for team updates, discussions, and quick coordination.</p>
+                        <div class="communication-channels">
+                            <div class="channel-item">
+                                <div>
+                                    <div class="channel-name">#global-commercial-partnerships</div>
+                                    <p class="channel-description">All team channel for Global Commercial Partnerships</p>
+                                    <ul class="channel-uses">
+                                        <li>For quick chats and discussions</li>
+                                        <li>When you need answers now</li>
+                                        <li>Day-to-day collaboration</li>
+                                        <li>Hot topics (but remember stuff disappears after 18 months!)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="channel-item">
+                                <div>
+                                    <div class="channel-name">#commercial-partnerships-ai</div>
+                                    <p class="channel-description">Space for leveraging AI within Global Commercial Partnerships</p>
+                                    <ul class="channel-uses">
+                                        <li>Share your AI wins and use cases</li>
+                                        <li>Post quick demos of your workflows</li>
+                                        <li>Ask questions when you're stuck</li>
+                                        <li>Seek support for specific challenges</li>
+                                        <li>Learn how other teams are applying AI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- More Slack channels will be added here -->
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🗄️ Vault</h3>
+                        <p>Our centralized knowledge base for documentation, processes, and important team resources.</p>
+                        <div class="communication-channels">
+                            <div class="channel-item">
+                                <div>
+                                    <div class="channel-name">
+                                        <a href="https://vault.shopify.io/teams/16780-Partnerships" target="_blank" rel="noopener noreferrer">
+                                            Vault Feed: Partnerships
+                                        </a>
+                                    </div>
+                                    <ul class="channel-uses">
+                                        <li>Team announcements and important updates</li>
+                                        <li>Documentation and long-term reference materials</li>
+                                        <li>Decision records and context sharing</li>
+                                        <li>Searchable, permanent knowledge repository</li>
+                                        <li>GSD project updates and health checks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- More Vault sections will be added here -->
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </section>
+
+            <!-- Section 4: Rituals -->
+            <section class="section" id="section4">
+                <div class="section-header">
+                    <h2>Team Rituals</h2>
+                    <span class="section-number">04</span>
+                </div>
+                <div class="section-content">
+                    <div class="card">
+                        <h3>Our Team Rituals</h3>
+                        <p>These are the regular meetings and activities that keep our Global Commercial Partnerships team connected, informed, and aligned on our shared goals.</p>
+
+                    </div>
+                    
+                    <div class="card">
+                        <h3>📅 Regular Team Meetings</h3>
+                        <div class="rituals-list">
+                            <div class="ritual-item">
+                                <div class="ritual-header">
+                                    <h4>Global Commercial Partnerships All Hands</h4>
+                                    <span class="ritual-frequency">Monthly</span>
+                                </div>
+                                <p class="ritual-description">All Hands meeting (Partner showcases, AI demos, updates, AMA, etc)</p>
+                                <p class="ritual-note">Recordings and transcripts of past meetings can be found in #global-commercial-partnerships banner</p>
+                            </div>
+                            
+                            <div class="ritual-item">
+                                <div class="ritual-header">
+                                    <h4>Coffee with Rukmani</h4>
+                                    <span class="ritual-frequency">Bi-Weekly One Off</span>
+                                </div>
+                                <p class="ritual-description">Small group coffee chats with Rukmani and crafters from different teams. No agenda, just a chance to chat and get to know each other better!</p>
+                            </div>
+                            
+                            <div class="ritual-item">
+                                <div class="ritual-header">
+                                    <h4>Office Hours with Rukmani</h4>
+                                    <span class="ritual-frequency">Bi-Weekly</span>
+                                </div>
+                                <div class="ritual-description">
+                                    <ol class="ritual-points">
+                                        <li><strong>Open Forum:</strong> Jump into the conversation! A collaborative space where everyone can bring topics to the table and learn from each other's questions</li>
+                                        <li><strong>15-minute slots (1 hour total):</strong> Need focused attention? These quick sessions are perfect for getting unblocked, securing approvals, or receiving direct feedback</li>
+                                    </ol>
+                                </div>
+                                <p class="ritual-note">More information on how to book office hours can be found in the #global-commercial-partnerships banner</p>
+                            </div>
+                            <!-- More rituals will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Resources -->
+            <section class="section" id="section5">
+                <div class="section-header">
+                    <h2>Resources</h2>
+                    <span class="section-number">05</span>
+                </div>
+                <div class="section-content">
+                    <div class="card">
+                        <h3>Coming Soon</h3>
+                        <p>Helpful resources will be added here.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn prev-btn" id="prevBtn" disabled>
+                ← Previous
+            </button>
+            <span class="nav-info">
+                <span id="currentStep">1</span> of 5
+            </span>
+            <button class="nav-btn next-btn" id="nextBtn">
+                Next →
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // Simple navigation
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function showSection(step) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show current section
+            document.getElementById(`section${step}`).classList.add('active');
+            
+            // Update progress bar
+            const progressFill = document.querySelector('.progress-fill');
+            const progressWidth = (step / totalSteps) * 100;
+            progressFill.style.width = `${progressWidth}%`;
+            
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((stepEl, index) => {
+                stepEl.classList.remove('active');
+                if (index + 1 === step) {
+                    stepEl.classList.add('active');
+                }
+            });
+            
+            // Update navigation
+            document.getElementById('currentStep').textContent = step;
+            document.getElementById('prevBtn').disabled = step === 1;
+            document.getElementById('nextBtn').textContent = step === totalSteps ? 'Complete' : 'Next →';
+            
+            // Scroll to top of page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navigation buttons
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                showSection(currentStep);
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showSection(currentStep);
+            } else {
+                alert('Welcome to the team! 🎉');
+            }
+        });
+
+        // Step indicators
+        document.querySelectorAll('.step').forEach((step, index) => {
+            step.addEventListener('click', () => {
+                currentStep = index + 1;
+                showSection(currentStep);
+            });
+        });
+
+        // Flip card functionality
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+</body>
+</html>
